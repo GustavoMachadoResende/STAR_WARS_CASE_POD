@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-# from mangum import Mangum
+# from mangum import Mangum # TESTE
 from api.src.controller import router
 
 app = FastAPI()
