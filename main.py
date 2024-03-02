@@ -6,3 +6,5 @@ app = FastAPI()
 # handler = Mangum(app)
 
 app.include_router(router)
+
+# TESTE DE ALTERAÇÃO
