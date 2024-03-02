@@ -3,7 +3,7 @@ name: Star Wars Case | Power of Data CI/CD
 on:
   push:
     branches:
-    - dev
+    - prd
 
 jobs:
   CI:
