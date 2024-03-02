@@ -39,15 +39,8 @@ jobs:
           . venv/bin/activate &&
           python -m unittest discover -s tests
 
-      - name: Create archive of dependencies
-        run: |
-          cd ./venv/lib/python3.9/site-packages &&
-          zip -r9 ../../../../api.zip .
-
-      - name: Add API files to Zip file
-        run: |
-          cd ./api &&
-          zip -g ../api.zip *.py
+      - name: Create archive of project files
+        run: zip -r9 api.zip . -x '*.git*'
 
       - name: Upload zip file artifact
         uses: actions/upload-artifact@v2
