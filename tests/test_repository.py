@@ -1,5 +1,5 @@
 import unittest
-from src.repository import soma
+from api.src.repository import soma
 
 
 class TestRepository(unittest.TestCase):
