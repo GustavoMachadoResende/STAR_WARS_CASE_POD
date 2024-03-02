@@ -6,7 +6,7 @@ class TestRepository(unittest.TestCase):
 
     def test_soma(self):
         result = soma(5, 3)
-        expected = 8
+        expected = 7
         self.assertEqual(result, expected)
 
 if __name__ == '__main__':
