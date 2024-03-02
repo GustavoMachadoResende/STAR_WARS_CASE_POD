@@ -17,7 +17,7 @@ jobs:
           python-version: 3.9
 
       - name: Install Python Virtual ENV
-        run: pip3 intall virtualenv 
+        run: pip3 intall virtualenv
 
       - name: Virtual ENV
         uses: actions/cache@v2
@@ -38,7 +38,7 @@ jobs:
           run: /
             cd ./venv/lib/python3.9/site-packages
             zip -r9 ../../../../api.zip .
-          
+
         - name: Add API files to Zip file
           run: cd ./api && zip -g ../api.zip ir .
 
@@ -47,5 +47,3 @@ jobs:
           with:
             name: api
             path: api.zip
-
-
