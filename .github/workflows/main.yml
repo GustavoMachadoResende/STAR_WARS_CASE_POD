@@ -42,15 +42,15 @@ jobs:
       - name: Create archive of dependencies
         run: |
           cd ./venv/lib/python3.9/site-packages &&
-          zip -r9 ../../../../main.zip .
+          zip -r9 ../../../../src.zip .
 
       - name: Add API files to Zip file
         run: |
-          cd ./main &&
-          zip -g ../main.zip *.py
+          cd ./src &&
+          zip -g ../src.zip *.py
 
       - name: Upload zip file artifact
         uses: actions/upload-artifact@v2
         with:
-          name: main
-          path: main.zip
+          name: src
+          path: src.zip
