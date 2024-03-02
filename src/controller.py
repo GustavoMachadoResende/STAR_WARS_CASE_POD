@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 import requests
-from api.src.repository import soma
+from src.repository import soma
 
 router = APIRouter()
 
