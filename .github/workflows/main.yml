@@ -40,7 +40,9 @@ jobs:
           python -m unittest discover -s tests
 
       - name: Create archive of project files
-        run: zip -r9 api.zip . -x '*.git*'
+        run: |
+          cd ./venv/lib/site-packages
+          zip -r9 ../../../api.zip .
 
       - name: Upload zip file artifact
         uses: actions/upload-artifact@v2
