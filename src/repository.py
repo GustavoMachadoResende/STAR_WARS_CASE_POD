@@ -105,7 +105,7 @@ class RepositoryStarWars:
         except Exception as e:
                 raise e
 
-    def _get_film_data(self): # TODO test
+    def _get_film_data(self):
         try:
             film_data = self._get_data_from_swapi(context='films', value=self.film)
             dict_name =  f"Film - {film_data['title']}"
