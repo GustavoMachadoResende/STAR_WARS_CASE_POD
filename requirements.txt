@@ -9,8 +9,8 @@ fastapi==0.63.0
 h11==0.12.0
 idna==2.10
 mangum==0.9.1
-pydantic==1.8.2
-pydantic-core==1.8.2
+pydantic==2.14.6
+pydantic-core==2.14.6
 requests==2.25.1
 sniffio==1.2.0
 starlette==0.14.2
