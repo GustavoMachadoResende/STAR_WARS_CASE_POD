@@ -108,5 +108,27 @@ class TestRepositoryStarWars(unittest.TestCase):
         self.assertIsInstance(result, dict)
         self.assertEqual(result, expected_result)
 
+    def test_get_starship_data(self):
+        result = self.repository._get_starship_data()
+        expected_result = {
+            "Starship - Executor": {
+                "name": "Executor",
+                "model": "Executor-class star dreadnought",
+                "starship_class": "Star dreadnought",
+                "passengers": "38000",
+                "cost_in_credits": "1143350000",
+                "length": "19000",
+                "consumables": "6 years",
+                "pilots": [],
+                "films": [
+                "The Empire Strikes Back",
+                "Return of the Jedi"
+                ]
+            }
+        }
+
+        self.assertIsInstance(result, dict)
+        self.assertEqual(result, expected_result)
+
 if __name__ == '__main__':
     unittest.main()

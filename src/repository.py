@@ -84,7 +84,7 @@ class RepositoryStarWars:
         except Exception as e:
                 raise e
 
-    def _get_starship_data(self): # TODO test
+    def _get_starship_data(self) -> dict:
         try:
             starship_data = self._get_data_from_swapi(context='starships', value=self.starship)
             dict_name =  f"Starship - {starship_data['name']}"
