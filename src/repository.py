@@ -8,7 +8,7 @@ class RepositoryStarWars:
         self.starship = starship
         self.film = film
 
-    def _get_data_from_swapi(self, context: str = None, value: str = None, complete_url: str = None): # TODO test
+    def _get_data_from_swapi(self, context: str = None, value: str = None, complete_url: str = None) -> dict:
         try:
             if complete_url:
                 response = requests.get(complete_url)
@@ -26,7 +26,7 @@ class RepositoryStarWars:
         except Exception as e:
              raise e
 
-    def _get_data_of_complete_url_from_swapi(self, url: list|str, context: str): # TODO test
+    def _get_data_of_complete_url_from_swapi(self, url: list|str, context: str) -> list|str:
         try:
             if isinstance(url, list):
                 data_list = ([])
@@ -44,7 +44,7 @@ class RepositoryStarWars:
         except Exception as e:
             raise e
 
-    def _get_character_data(self): # TODO test
+    def _get_character_data(self) -> dict:
         try:
             character_data = self._get_data_from_swapi(context='people', value=self.character)
             dict_name =  f"Character - {character_data['name']}"
@@ -65,7 +65,7 @@ class RepositoryStarWars:
         except Exception as e:
                 raise e
 
-    def _get_planet_data(self): # TODO test
+    def _get_planet_data(self) -> dict:
         try:
             planet_data = self._get_data_from_swapi(context='planets', value=self.planet)
             dict_name =  f"Planet - {planet_data['name']}"
