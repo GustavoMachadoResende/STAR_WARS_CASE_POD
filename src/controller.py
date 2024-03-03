@@ -8,7 +8,7 @@ router = APIRouter()
 def controller_get_all_about_star_wars(character: Optional[str] = None, planet: Optional[str] = None, starship: Optional[str] = None, film: Optional[str] = None):
     try:
         repository = RepositoryStarWars(character=character, planet=planet, starship=starship, film=film)
-        result = repository.all_data_about_star_wars()
+        result = repository.get_all_star_wars_data()
 
         return result
     except Exception as e:
