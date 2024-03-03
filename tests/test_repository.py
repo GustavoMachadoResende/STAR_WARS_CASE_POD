@@ -100,7 +100,7 @@ class TestRepositoryStarWars(unittest.TestCase):
                 "Return of the Jedi",
                 "The Phantom Menace",
                 "Attack of the Clones",
-                "Revenge of the Sith"
+                "Revenge of the Sit"
                 ]
             }
         }
