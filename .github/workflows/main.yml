@@ -3,7 +3,7 @@ name: Star Wars Case | Power of Data CI/CD
 on:
   push:
     branches:
-    - dev
+      - dev
 
 jobs:
   CI:
@@ -43,6 +43,7 @@ jobs:
         run: |
           cd ./venv/lib/python3.9/site-packages
           zip -r9 ../../../../api.zip .
+          zip -g ../../../../api.zip -r api
 
       - name: Upload zip file artifact
         uses: actions/upload-artifact@v2
