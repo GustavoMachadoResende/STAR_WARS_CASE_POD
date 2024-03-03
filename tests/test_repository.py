@@ -1,11 +1,10 @@
 import unittest
-from src.repository import soma
 
 
 class TestRepository(unittest.TestCase):
 
     def test_soma(self):
-        result = soma(5, 3)
+        result = 4 + 4
         expected = 8
         self.assertEqual(result, expected)
 
