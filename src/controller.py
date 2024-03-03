@@ -1,19 +1,15 @@
+from typing import Optional
 from fastapi import APIRouter
-import requests
-# from api.repository import soma
+from src.repository import RepositoryStarWars
 
 router = APIRouter()
 
-@router.get("/")
-# def controller_test(name: str) -> None:
-# def controller_test(num1, num2) -> None:
-def controller_test() -> None:
+@router.get("/starwars-data")
+def controller_get_all_about_star_wars(character: Optional[str] = None, planet: Optional[str] = None, starship: Optional[str] = None, film: Optional[str] = None):
     try:
-        # url: str =  f'https://swapi.dev/api/{name}/'
-        # url_connection = requests.get(url)
-        # test = url_connection
-        # soma_test = soma(num1, num2)
-        result = {"teste": "brabo"}
+        repository = RepositoryStarWars(character, planet, starship, film)
+        result = repository.all_data_about_star_wars()
+
         return result
     except Exception as e:
         raise e
