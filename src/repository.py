@@ -11,13 +11,13 @@ class RepositoryStarWars:
     def _get_data_from_swapi(self, context: str = None, value: str = None, complete_url: str = None) -> dict:
         try:
             if complete_url:
-                response = requests.get(complete_url)
-                data = response.json()
+                response: requests.models.Response = requests.get(complete_url)
+                data: dict = response.json()
                 return data
             else:
-                url = f'https://swapi.dev/api/{context}/?search={value}'
-                response = requests.get(url)
-                data = response.json()
+                url: str = f'https://swapi.dev/api/{context}/?search={value}'
+                response: requests.models.Response = requests.get(url)
+                data: dict = response.json()
                 if data['count'] == 0:
                     raise HTTPException(status_code=404, detail={
                         'message': f'The {context} {value} does not exist in Star Wars.',
@@ -29,9 +29,9 @@ class RepositoryStarWars:
     def _get_data_of_complete_url_from_swapi(self, url: list|str, context: str) -> list|str:
         try:
             if isinstance(url, list):
-                data_list = ([])
+                data_list: list = ([])
                 for url_item in url:
-                    data = self._get_data_from_swapi(complete_url=url_item)
+                    data: dict = self._get_data_from_swapi(complete_url=url_item)
                     if context == 'films':
                         data_list.append(data['title'])
                     else:
@@ -39,16 +39,16 @@ class RepositoryStarWars:
                 return data_list
 
             if isinstance(url, str):
-                 data = self._get_data_from_swapi(complete_url=url)
+                 data: dict = self._get_data_from_swapi(complete_url=url)
                  return data['name']
         except Exception as e:
             raise e
 
     def _get_character_data(self) -> dict:
         try:
-            character_data = self._get_data_from_swapi(context='people', value=self.character)
-            dict_name =  f"Character - {character_data['name']}"
-            character_data_dict = {
+            character_data: dict = self._get_data_from_swapi(context='people', value=self.character)
+            dict_name: str = f"Character - {character_data['name']}"
+            character_data_dict: dict = {
                 dict_name: {
                     'name': character_data['name'],
                     'hair_color': character_data['hair_color'],
@@ -67,9 +67,9 @@ class RepositoryStarWars:
 
     def _get_planet_data(self) -> dict:
         try:
-            planet_data = self._get_data_from_swapi(context='planets', value=self.planet)
-            dict_name =  f"Planet - {planet_data['name']}"
-            planet_data_dict = {
+            planet_data: dict = self._get_data_from_swapi(context='planets', value=self.planet)
+            dict_name: str = f"Planet - {planet_data['name']}"
+            planet_data_dict: dict = {
                 dict_name: {
                     'name': planet_data['name'],
                     'population': planet_data['population'],
@@ -86,9 +86,9 @@ class RepositoryStarWars:
 
     def _get_starship_data(self) -> dict:
         try:
-            starship_data = self._get_data_from_swapi(context='starships', value=self.starship)
-            dict_name =  f"Starship - {starship_data['name']}"
-            starship_data_dict = {
+            starship_data: dict = self._get_data_from_swapi(context='starships', value=self.starship)
+            dict_name: str = f"Starship - {starship_data['name']}"
+            starship_data_dict: dict = {
                 dict_name: {
                     'name': starship_data['name'],
                     'model': starship_data['model'],
@@ -107,9 +107,9 @@ class RepositoryStarWars:
 
     def _get_film_data(self):
         try:
-            film_data = self._get_data_from_swapi(context='films', value=self.film)
-            dict_name =  f"Film - {film_data['title']}"
-            film_data_dict = {
+            film_data: dict = self._get_data_from_swapi(context='films', value=self.film)
+            dict_name: str = f"Film - {film_data['title']}"
+            film_data_dict: dict = {
                 dict_name: {
                     'title': film_data['title'],
                     'opening_crawl': film_data['opening_crawl'],
@@ -125,34 +125,35 @@ class RepositoryStarWars:
         except Exception as e:
                 raise e
 
-    def all_data_about_star_wars(self): # TODO test TALVEZ
+    def get_all_star_wars_data(self) -> dict:
         try:
-            data_list = ([])
+            result: dict = ({})
 
             if self.character and isinstance(self.character, str):
-                character_data = self._get_character_data()
-                data_list.append(character_data)
+                character_data: dict = self._get_character_data()
+                result.update(character_data)
+                character_data = None
 
             if self.planet and isinstance(self.planet, str):
-                planet_data = self._get_planet_data()
-                data_list.append(planet_data)
+                planet_data: dict = self._get_planet_data()
+                result.update(planet_data)
+                planet_data = None
 
             if self.starship and isinstance(self.starship, str):
-                starship_data = self._get_starship_data()
-                data_list.append(starship_data)
+                starship_data: dict = self._get_starship_data()
+                result.update(starship_data)
+                starship_data = None
 
             if self.film and isinstance(self.film, str):
-                film_data = self._get_film_data()
-                data_list.append(film_data)
+                film_data: dict = self._get_film_data()
+                result.update(film_data)
+                film_data = None
 
             if not self.character and not self.planet and not self.starship and not self.film:
                 raise HTTPException(status_code=400, detail={
                     'message': 'Please search for at least one of the fields to get your Star Wars information.',
                 })
 
-            json_string = json.dumps(data_list)
-            json_result = json.loads(json_string)
-
-            return json_result
+            return result
         except Exception as e:
                 raise e
