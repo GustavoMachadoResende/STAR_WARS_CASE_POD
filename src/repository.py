@@ -1,4 +1,3 @@
-import json
 import requests
 from fastapi import HTTPException
 class RepositoryStarWars:
