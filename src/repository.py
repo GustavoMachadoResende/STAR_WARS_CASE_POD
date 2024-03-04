@@ -148,11 +148,6 @@ class RepositoryStarWars:
                 result.update(film_data)
                 film_data = None
 
-            if not self.character and not self.planet and not self.starship and not self.film:
-                raise HTTPException(status_code=400, detail={
-                    'message': 'Please search for at least one of the fields to get your Star Wars information.',
-                })
-
             return result
         except Exception as e:
                 raise e
