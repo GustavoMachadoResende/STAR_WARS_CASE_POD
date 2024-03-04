@@ -8,7 +8,7 @@ API capaz de gerar dados sobre o Star Wars a partir de parâmetros como:
 - Starship (espaçonave) 🚀🌟
 - Film (filme) 🎬🌌
 
-## 🧪 Tecnologias
+## 🛠️ Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
@@ -17,6 +17,10 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [AWS Lambda](https://docs.aws.amazon.com/lambda/?icmpid=docs_homepage_featuredsvcs) - Serviço serverless para execução de código.
 - [AWS API Gateway](https://docs.aws.amazon.com/apigateway/?icmpid=docs_homepage_networking) - Gerenciador de APIs que facilita a criação e publicação .
 - [SWAPI](https://swapi.dev/documentation) - API com dados do Star Wars.
+
+## 📝 Conhecimentos extras aplicados
+- Testes unitários 🧪
+- Criação do CI/CD para automazização do processo de integração e entrega contínua🤖🔄
 
 ## 🚀 Como executar
 
