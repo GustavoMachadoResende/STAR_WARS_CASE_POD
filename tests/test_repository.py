@@ -4,14 +4,14 @@ from src.repository import RepositoryStarWars
 
 class TestRepositoryStarWars(unittest.TestCase):
     def setUp(self):
-        self.repository = RepositoryStarWars(character='Yoda', planet='Tatooine', starship='Executor',  film='A New Hope')
-        self.url = 'https://swapi.dev/api/people/20/'
+        self.repository: RepositoryStarWars = RepositoryStarWars(character='Yoda', planet='Tatooine', starship='Executor',  film='A New Hope')
+        self.url: str = 'https://swapi.dev/api/people/20/'
 
     def test_get_data_from_swapi(self):
-        result = self.repository._get_data_from_swapi(context='people', value='Yoda')
-        result_complete_url = self.repository._get_data_from_swapi(complete_url=self.url)
+        result: dict = self.repository._get_data_from_swapi(context='people', value='Yoda')
+        result_complete_url: dict = self.repository._get_data_from_swapi(complete_url=self.url)
 
-        expected_result = {
+        expected_result: dict = {
             'name': 'Yoda',
             'height': '66',
             'mass': '17',
@@ -36,22 +36,22 @@ class TestRepositoryStarWars(unittest.TestCase):
         self.assertEqual(result_complete_url, expected_result)
 
     def test_get_data_of_complete_url_from_swapi(self):
-        url_list = ['https://swapi.dev/api/people/1/', 'https://swapi.dev/api/people/2/', 'https://swapi.dev/api/people/3/']
-        result_url_list = self.repository._get_data_of_complete_url_from_swapi(url=url_list, context='people')
-        expected_result_url_list = ['Luke Skywalker', 'C-3PO', 'R2-D2']
+        url_list: list = ['https://swapi.dev/api/people/1/', 'https://swapi.dev/api/people/2/', 'https://swapi.dev/api/people/3/']
+        result_url_list: list = self.repository._get_data_of_complete_url_from_swapi(url=url_list, context='people')
+        expected_result_url_list: list = ['Luke Skywalker', 'C-3PO', 'R2-D2']
 
         self.assertIsInstance(result_url_list, list)
         self.assertEqual(result_url_list, expected_result_url_list)
 
-        result_url_str = self.repository._get_data_of_complete_url_from_swapi(url=self.url, context='people')
-        expected_result_url_str = 'Yoda'
+        result_url_str: str = self.repository._get_data_of_complete_url_from_swapi(url=self.url, context='people')
+        expected_result_url_str: str = 'Yoda'
 
         self.assertIsInstance(result_url_str, str)
         self.assertEqual(result_url_str, expected_result_url_str)
 
     def test_get_character_data(self):
-        result = self.repository._get_character_data()
-        expected_result = {
+        result: dict = self.repository._get_character_data()
+        expected_result: dict = {
             "Character - Yoda": {
                 "name": "Yoda",
                 "hair_color": "white",
@@ -75,8 +75,8 @@ class TestRepositoryStarWars(unittest.TestCase):
         self.assertEqual(result, expected_result)
 
     def test_get_planet_data(self):
-        result = self.repository._get_planet_data()
-        expected_result = {
+        result: dict = self.repository._get_planet_data()
+        expected_result: dict = {
             "Planet - Tatooine": {
                 "name": "Tatooine",
                 "population": "200000",
@@ -109,8 +109,8 @@ class TestRepositoryStarWars(unittest.TestCase):
         self.assertEqual(result, expected_result)
 
     def test_get_starship_data(self):
-        result = self.repository._get_starship_data()
-        expected_result = {
+        result: dict = self.repository._get_starship_data()
+        expected_result: dict = {
             "Starship - Executor": {
                 "name": "Executor",
                 "model": "Executor-class star dreadnought",
@@ -131,8 +131,8 @@ class TestRepositoryStarWars(unittest.TestCase):
         self.assertEqual(result, expected_result)
 
     def test_get_film_data(self):
-        result = self.repository._get_film_data()
-        expected_result = {
+        result: dict = self.repository._get_film_data()
+        expected_result: dict = {
             "Film - A New Hope": {
                 "title": "A New Hope",
                 "opening_crawl": "It is a period of civil war.\r\nRebel spaceships, striking\r\nfrom a hidden base, have won\r\ntheir first victory against\r\nthe evil Galactic Empire.\r\n\r\nDuring the battle, Rebel\r\nspies managed to steal secret\r\nplans to the Empire's\r\nultimate weapon, the DEATH\r\nSTAR, an armored space\r\nstation with enough power\r\nto destroy an entire planet.\r\n\r\nPursued by the Empire's\r\nsinister agents, Princess\r\nLeia races home aboard her\r\nstarship, custodian of the\r\nstolen plans that can save her\r\npeople and restore\r\nfreedom to the galaxy....",
@@ -181,8 +181,8 @@ class TestRepositoryStarWars(unittest.TestCase):
         self.assertEqual(result, expected_result)
 
     def test_get_all_star_wars_data(self):
-        result = self.repository.get_all_star_wars_data()
-        expected_result = {
+        result: dict = self.repository.get_all_star_wars_data()
+        expected_result: dict = {
             "Character - Yoda": {
                 "name": "Yoda",
                 "hair_color": "white",

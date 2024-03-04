@@ -3,10 +3,10 @@ import requests
 from fastapi import HTTPException
 class RepositoryStarWars:
     def __init__(self, character: str, planet: str, starship: str, film: str) -> None:
-        self.character = character
-        self.planet = planet
-        self.starship = starship
-        self.film = film
+        self.character: str = character
+        self.planet: str = planet
+        self.starship: str = starship
+        self.film: str = film
 
     def _get_data_from_swapi(self, context: str = None, value: str = None, complete_url: str = None) -> dict:
         try:
