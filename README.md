@@ -20,7 +20,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ## 📝 Conhecimentos extras aplicados
 - Testes unitários 🧪
-- Criação do CI/CD para automazização do processo de integração e entrega contínua🤖🔄
+- Criação do CI/CD para automatização do processo de integração e entrega contínua🤖🔄
 
 ## 🚀 Como executar
 
